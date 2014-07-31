@@ -29,4 +29,4 @@ client.on('error', console.error);
 channel.on('error', console.error);
 
 GetSearchData();
-setInterval(GetSearchData, 6500 );
+setInterval(GetSearchData, 10000 );
