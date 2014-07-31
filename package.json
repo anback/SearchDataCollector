@@ -1,7 +1,7 @@
 {
-  "name": "MomondoScraper",
+  "name": "SearchDataCollector",
   "version": "0.0.0",
-  "description": "MomondoScraper",
+  "description": "SearchDataCollector",
   "main": "app.js",
   "dependencies": {
     "mysql": "2.4.1",
