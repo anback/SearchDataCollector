@@ -35,15 +35,12 @@ if (!String.prototype.format) {
 }
 
 function GetSearchData() {
-  console.log("Getting Search Data")
+  console.log("**************** NEW SEARCH *****************")
   var sql = GetSearchQuery();
   console.log(sql);
   connection.query(sql, function(err, rows, fields) {
     if (err) throw err;
-    console.log("Found Data")
     rows.forEach(function(item) {
-
-      console.log("Publishing Data ..");
       console.log(item);
       channel.publish('NewSearch', item); 
     })
