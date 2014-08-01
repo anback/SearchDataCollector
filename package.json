@@ -5,7 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "mysql": "2.4.1",
-    "mubsub": "1.0.4"
+    "mubsub": "1.0.4",
+    "moment": "2.8.0"
   },
   "scripts": {
     "test": "node app.js"
