@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
 
 function GetSearchQuery() {
 
-  var CreateDate = moment().subtract(10, 's').format('YYYY-MM-DD hh:mm:ss');
+  var CreateDate = moment().subtract(1, 's').format('YYYY-MM-DD hh:mm:ss');
   var sqlQuery = "SELECT in_FromCity, in_ToCity, in_DepartureDate, in_ReturnDate, Created FROM tomtom.statisticsairsearchlog where in_ReturnDate != '0001-01-01 00:00:00' and SearchName = 'GETAIRFARESMAIN' and Created > '{0}' and out_BestNumberOfSeg > 5.0 and out_BestTotalPrice > 300.0 order by Created desc limit 10"
   sqlQuery = sqlQuery.format(CreateDate);
   return sqlQuery;
