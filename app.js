@@ -52,5 +52,5 @@ client.on('error', console.error);
 channel.on('error', console.error);
 
 GetSearchData();
-setInterval(GetSearchData, 10000 );
+setInterval(GetSearchData, 1000 );
 
