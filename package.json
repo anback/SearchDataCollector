@@ -6,7 +6,7 @@
   "dependencies": {
     "mysql": "2.4.1",
     "mubsub": "1.0.4",
-    "datejs": "1.0.0"
+    "datejs": "1.0.0-rc1"
   },
   "scripts": {
     "test": "node app.js"
