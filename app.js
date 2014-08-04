@@ -1,8 +1,5 @@
-
-var moment = require('moment');
-
-console.log(moment().format('YYYY-MM-DD hh:mm:ss'));
 var mubsub = require('mubsub');
+var datejs = require('datejs');
 
 var client = mubsub('mongodb://swalo:84kAanan@ds051658.mongolab.com:51658/swalo');
 var channel = client.channel('searches');
@@ -15,9 +12,9 @@ var connection = mysql.createConnection({
 
 function GetSearchQuery() {
 
-  var CreateDate = moment().subtract(1, 's').add(12, 'h').format('YYYY-MM-DD hh:mm:ss');
+  var CreateDate = new Date().add({ seconds: -1}).toString('yyyy-MM-dd HH:mm:ss');
   console.log(CreateDate);
-  var sqlQuery = "SELECT in_FromCity, in_ToCity, in_DepartureDate, in_ReturnDate, Created FROM tomtom.statisticsairsearchlog where in_ReturnDate != '0001-01-01 00:00:00' and SearchName = 'GETAIRFARESMAIN' and out_BestNumberOfSeg > 5.0 and out_BestTotalPrice > 300.0 order by Created desc limit 1"
+  var sqlQuery = "SELECT in_FromCity, in_ToCity, in_DepartureDate, in_ReturnDate, Created FROM tomtom.statisticsairsearchlog where in_ReturnDate != '0001-01-01 00:00:00' and SearchName = 'GETAIRFARESMAIN' and Created > '{0}' order by Created desc limit 10"
   sqlQuery = sqlQuery.format(CreateDate);
   return sqlQuery;
 }
