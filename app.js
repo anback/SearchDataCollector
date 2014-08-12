@@ -15,8 +15,8 @@ function GetSearchQuery() {
   var CreateDate = new Date().add({ seconds: -40}).toString('yyyy-MM-dd HH:mm:ss');
   var CreateDate2 = new Date().add({ seconds: -30}).toString('yyyy-MM-dd HH:mm:ss');
   console.log(CreateDate);
-  /**/
-  var sqlQuery = "SELECT in_FromCity, in_ToCity, in_DepartureDate, in_ReturnDate, Created FROM tomtom.statisticsairsearchlog where out_BestNumberOfSeg > 3 and out_BestTotalPrice > 300.0 and in_OneWay = 0 and SearchName = 'GETAIRFARESMAIN' and Created > '{0}' and Created < '{1}' order by Created desc limit 10"
+  /*out_BestTotalPrice > 300.0 and*/
+  var sqlQuery = "SELECT in_FromCity, in_ToCity, in_DepartureDate, in_ReturnDate, Created FROM tomtom.statisticsairsearchlog where in_OneWay = 0 and SearchName = 'GETAIRFARESMAIN' and Created > '{0}' and Created < '{1}' order by Created"
   sqlQuery = sqlQuery.format(CreateDate, CreateDate2);
   return sqlQuery;
 }
@@ -41,11 +41,15 @@ function GetSearchData() {
   connection.query(sql, function(err, rows, fields) {
     if (err) throw err;
     console.log('Got' + rows.length + " rows");
-    rows.forEach(function(item) {
-      //console.log(item);
-      console.log("Sending SearchData: " + item.in_FromCity + item.in_ToCity + item.in_DepartureDate + item.in_ReturnDate );
-      channel.publish('NewSearch', item); 
-    })
+
+    channel.publish('NewSearch', rows); 
+    /*
+      rows.forEach(function(item) {
+        //console.log(item);
+        console.log("Sending SearchData: " + item.in_FromCity + item.in_ToCity + item.in_DepartureDate + item.in_ReturnDate );
+        channel.publish('NewSearch', item); 
+      })
+    */
   });
 }
 
