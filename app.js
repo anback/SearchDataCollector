@@ -16,7 +16,7 @@ function GetSearchQuery() {
   var CreateDate2 = new Date().add({ seconds: -30}).toString('yyyy-MM-dd HH:mm:ss');
   console.log(CreateDate);
   /*out_BestTotalPrice > 300.0 and*/
-  var sqlQuery = "SELECT in_FromCity, in_ToCity, in_DepartureDate, in_ReturnDate, Created FROM tomtom.statisticsairsearchlog where in_OneWay = 0 and SearchName = 'GETAIRFARESMAIN' and Created > '{0}' and Created < '{1}' order by Created"
+  var sqlQuery = "SELECT in_FromCity, in_ToCity, in_DepartureDate, in_ReturnDate, Created FROM tomtom.statisticsairsearchlog where in_OneWay = 0 and out_BestNumberOfSeg > 3 and SearchName = 'GETAIRFARESMAIN' and Created > '{0}' and Created < '{1}' order by Created"
   sqlQuery = sqlQuery.format(CreateDate, CreateDate2);
   return sqlQuery;
 }
