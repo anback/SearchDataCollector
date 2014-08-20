@@ -1,7 +1,8 @@
 var mubsub = require('mubsub');
 var datejs = require('datejs');
 
-var client = mubsub('mongodb://swalo:84kAanan@ds051658.mongolab.com:51658/swalo');
+//var client = mubsub('mongodb://swalo:84kAanan@ds051658.mongolab.com:51658/swalo');
+var client = mubsub("mongodb://appserver2.mrorange.local:27017/test");
 var channel = client.channel('searches');
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -42,7 +43,7 @@ function GetSearchData() {
     if (err) throw err;
     console.log('Got' + rows.length + " rows");
 
-    channel.publish('NewSearch', rows); 
+    channel.publish('NewSearch', {CreateDate : new Date(), Rows : rows); 
     /*
       rows.forEach(function(item) {
         //console.log(item);
