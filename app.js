@@ -43,7 +43,7 @@ function GetSearchData() {
     if (err) throw err;
     console.log('Got' + rows.length + " rows");
 
-    channel.publish('NewSearch', {CreateDate : new Date(), Rows : rows); 
+    channel.publish('NewSearch', {CreateDate : new Date(), Rows : rows}); 
     /*
       rows.forEach(function(item) {
         //console.log(item);
