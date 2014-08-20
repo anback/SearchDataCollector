@@ -1,8 +1,7 @@
 var mubsub = require('mubsub');
 var datejs = require('datejs');
 
-//var client = mubsub('mongodb://swalo:84kAanan@ds051658.mongolab.com:51658/swalo');
-var client = mubsub("mongodb://appserver2.mrorange.local:27017/test");
+var client = mubsub('mongodb://swalo:84kAanan@ds051658.mongolab.com:51658/swalo');
 var channel = client.channel('searches');
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
